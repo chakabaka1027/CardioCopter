@@ -311,6 +311,7 @@ GameObject:
   - 61: {fileID: 957690716}
   - 50: {fileID: 957690717}
   - 114: {fileID: 957690718}
+  - 95: {fileID: 957690719}
   m_Layer: 0
   m_Name: Helicopter
   m_TagString: Untagged
@@ -406,6 +407,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4a62db4feff46859f693a64fcdb375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &957690719
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 957690713}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 539e0896ddeeb41d3ac562f762eb31f4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &1099374107
 Prefab:
   m_ObjectHideFlags: 0
@@ -415,7 +433,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000012394196762, guid: 6af2c47b6a5da408e9de4ceed8fbffc6, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 23.1
+      value: 14.98
       objectReference: {fileID: 0}
     - target: {fileID: 4000012394196762, guid: 6af2c47b6a5da408e9de4ceed8fbffc6, type: 2}
       propertyPath: m_LocalPosition.y
