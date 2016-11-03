@@ -17,6 +17,7 @@ public class Jewel : MonoBehaviour {
 		if (col.gameObject.tag == "Player" && player.hasCrate == false){
 			player.HasCrate();
 		}
+		player.GetComponent<Rigidbody2D>().mass += 0.25f;
 		Destroy(gameObject);
 
 	}

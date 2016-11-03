@@ -14,7 +14,14 @@ public class BuildingBehavior : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
-		player.isDamaged = true;
+		if (col.gameObject.tag == "Player"){
+			player.isDamaged = true;
+			player.DropCrate();
+		}
+
+		if (col.gameObject.tag == "Crate"){
+			Destroy(col.gameObject);
+		}
 	}
 
 	void OnTriggerExit2D(Collider2D col){
