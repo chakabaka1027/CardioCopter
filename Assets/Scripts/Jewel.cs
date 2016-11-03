@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BuildingBehavior : MonoBehaviour {
+public class Jewel : MonoBehaviour {
 
 	PlayerController player;
 
@@ -14,10 +14,10 @@ public class BuildingBehavior : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
-		player.isDamaged = true;
-	}
+		if (col.gameObject.tag == "Player" && player.hasCrate == false){
+			player.HasCrate();
+		}
+		Destroy(gameObject);
 
-	void OnTriggerExit2D(Collider2D col){
-		player.isDamaged = false;
 	}
 }
