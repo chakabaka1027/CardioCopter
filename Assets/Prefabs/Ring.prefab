@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particles: {fileID: 1000013856905564, guid: 4feef7c258ec04dc1bfeeecca5df88c1, type: 2}
+  ringCollect: {fileID: 8300000, guid: 68bd92317b2904efa9d5aae0d166d024, type: 3}
 --- !u!212 &212000013508077478
 SpriteRenderer:
   m_ObjectHideFlags: 1

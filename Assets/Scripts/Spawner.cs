@@ -51,7 +51,7 @@ public class Spawner : MonoBehaviour {
 		FindObjectOfType<PlayerController>().audioSource.PlayOneShot(FindObjectOfType<PlayerController>().startSound, 0.15f);
 
 		exerciseStage = ExerciseStage.warmUp;
-		StartCoroutine(uiManager.PhaseIndicatorAnimation("Warm Up Phase!"));
+		StartCoroutine(uiManager.PhaseIndicatorAnimation("WARM UP PHASE"));
 
 		while(exerciseStage == ExerciseStage.warmUp){
 			Destroy(Instantiate(ring, new Vector2(14, Random.Range(-3f, 3f)), Quaternion.identity), 15);
