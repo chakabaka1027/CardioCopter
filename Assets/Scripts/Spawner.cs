@@ -48,6 +48,8 @@ public class Spawner : MonoBehaviour {
 
 	public IEnumerator WarmUpPhase(){
 		yield return new WaitForSeconds(1);
+		FindObjectOfType<PlayerController>().audioSource.PlayOneShot(FindObjectOfType<PlayerController>().startSound, 0.15f);
+
 		exerciseStage = ExerciseStage.warmUp;
 		StartCoroutine(uiManager.PhaseIndicatorAnimation("Warm Up Phase!"));
 

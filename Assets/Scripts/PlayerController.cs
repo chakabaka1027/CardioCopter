@@ -3,6 +3,9 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
+	[Header("Sounds")]
+	public AudioClip startSound;
+
 	public bool isDamaged = false;
 	public GameObject crate;
 	public bool hasCrate = false;
@@ -12,12 +15,14 @@ public class PlayerController : MonoBehaviour {
 	Rigidbody2D rb;
 	float thrust = 5;
 	Animator animator;
+	public AudioSource audioSource;
 
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
+		audioSource = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -36,8 +41,6 @@ public class PlayerController : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Space)){
 			DropCrate();
 		}
-
-
 	}
 
 	public void HasCrate(){
