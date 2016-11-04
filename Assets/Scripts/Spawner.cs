@@ -10,7 +10,7 @@ public class Spawner : MonoBehaviour {
 
 	public GameObject phaseIndicator;
 
-	public enum ExerciseStage{warmUp, exercise, coolDown};
+	public enum ExerciseStage{warmUp, workOut, coolDown};
 	public ExerciseStage exerciseStage;
 
 	float nextSpawnTime;
@@ -18,24 +18,43 @@ public class Spawner : MonoBehaviour {
 
 
 	void Start(){
-//		StartCoroutine(SpawnBuilding());
-		exerciseStage = ExerciseStage.warmUp;
-
-		StartCoroutine(SpawnRings());
+		StartCoroutine(WarmUpPhase());
 	}
 
 	void Update(){
-		if(Input.GetKeyDown(KeyCode.RightArrow)){
-			exerciseStage = ExerciseStage.exercise;
-			StartCoroutine(SpawnBuilding());
+		if(Input.GetKeyDown(KeyCode.RightArrow) && exerciseStage == ExerciseStage.warmUp){
+			StopCoroutine(WarmUpPhase());
+			StartCoroutine(WorkOutPhase());
+		} 
+
+		else if(Input.GetKeyDown(KeyCode.RightArrow) && exerciseStage == ExerciseStage.workOut){
+			StopCoroutine(WorkOutPhase());
+
+			StartCoroutine(CoolDownPhase());
 		}
+
+		if(Input.GetKeyDown(KeyCode.LeftArrow) && exerciseStage == ExerciseStage.workOut){
+			StopCoroutine(WorkOutPhase());
+			StartCoroutine(WarmUpPhase());
+		} 
+
+		else if(Input.GetKeyDown(KeyCode.LeftArrow) && exerciseStage == ExerciseStage.coolDown){
+			StopCoroutine(CoolDownPhase());
+
+			StartCoroutine(WorkOutPhase());
+		}
+
+
 	}
 
-	public IEnumerator SpawnRings(){
-
+	public IEnumerator WarmUpPhase(){
+		yield return new WaitForSeconds(1);
+		exerciseStage = ExerciseStage.warmUp;
+		phaseIndicator.GetComponent<Animator>().Play("Spin");
 		phaseIndicator.GetComponent<Text>().text = "Warm Up Phase!";
 
 		yield return new WaitForSeconds(1);
+
 		phaseIndicator.GetComponent<Animator>().Play("FadeOut");
 
 		while(exerciseStage == ExerciseStage.warmUp){
@@ -45,14 +64,16 @@ public class Spawner : MonoBehaviour {
 		}
 	}
 
-	public IEnumerator SpawnBuilding(){
-
+	public IEnumerator WorkOutPhase(){
+		exerciseStage = ExerciseStage.workOut;
 		phaseIndicator.GetComponent<Animator>().Play("Spin");
 		phaseIndicator.GetComponent<Text>().text = "Work Out Phase!";
+
 		yield return new WaitForSeconds(1);
+
 		phaseIndicator.GetComponent<Animator>().Play("FadeOut");
 
-		while(exerciseStage == ExerciseStage.exercise){
+		while(exerciseStage == ExerciseStage.workOut){
 			GameObject currentBuilding = Instantiate(building, new Vector2(14, Random.Range(-3f, 1f)), Quaternion.identity) as GameObject;
 			SpawnJewel(currentBuilding.transform.position);
 			Destroy(currentBuilding, 15f);
@@ -65,5 +86,20 @@ public class Spawner : MonoBehaviour {
 		Destroy(Instantiate(jewel, offset + Vector2.up * Random.Range(5f, 7f), Quaternion.identity), 15);
 	}
 
+	public IEnumerator CoolDownPhase(){
+		exerciseStage = ExerciseStage.coolDown;
+		phaseIndicator.GetComponent<Animator>().Play("Spin");
+		phaseIndicator.GetComponent<Text>().text = "Cool Down Phase!";
+
+		yield return new WaitForSeconds(1);
+
+		phaseIndicator.GetComponent<Animator>().Play("FadeOut");
+
+		while(exerciseStage == ExerciseStage.coolDown){
+			Destroy(Instantiate(ring, new Vector2(14, Random.Range(-3f, 3f)), Quaternion.identity), 15);
+
+			yield return new WaitForSeconds(4f);
+		}
+	}
 
 }
