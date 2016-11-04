@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour {
 	public GameObject building;
 	public GameObject ring;
 
-	public GameObject phaseIndicator;
+	public UIManager uiManager;
 
 	public enum ExerciseStage{warmUp, workOut, coolDown};
 	public ExerciseStage exerciseStage;
@@ -18,6 +18,7 @@ public class Spawner : MonoBehaviour {
 
 
 	void Start(){
+		uiManager = FindObjectOfType<UIManager>();
 		StartCoroutine(WarmUpPhase());
 	}
 
@@ -48,12 +49,7 @@ public class Spawner : MonoBehaviour {
 	public IEnumerator WarmUpPhase(){
 		yield return new WaitForSeconds(1);
 		exerciseStage = ExerciseStage.warmUp;
-		phaseIndicator.GetComponent<Animator>().Play("Spin");
-		phaseIndicator.GetComponent<Text>().text = "Warm Up Phase!";
-
-		yield return new WaitForSeconds(1);
-
-		phaseIndicator.GetComponent<Animator>().Play("FadeOut");
+		StartCoroutine(uiManager.PhaseIndicatorAnimation("Warm Up Phase!"));
 
 		while(exerciseStage == ExerciseStage.warmUp){
 			Destroy(Instantiate(ring, new Vector2(14, Random.Range(-3f, 3f)), Quaternion.identity), 15);
@@ -64,12 +60,8 @@ public class Spawner : MonoBehaviour {
 
 	public IEnumerator WorkOutPhase(){
 		exerciseStage = ExerciseStage.workOut;
-		phaseIndicator.GetComponent<Animator>().Play("Spin");
-		phaseIndicator.GetComponent<Text>().text = "Work Out Phase!";
+		StartCoroutine(uiManager.PhaseIndicatorAnimation("Work Out Phase!"));
 
-		yield return new WaitForSeconds(1);
-
-		phaseIndicator.GetComponent<Animator>().Play("FadeOut");
 
 		while(exerciseStage == ExerciseStage.workOut){
 			GameObject currentBuilding = Instantiate(building, new Vector2(14, Random.Range(-3f, 1f)), Quaternion.identity) as GameObject;
@@ -86,12 +78,8 @@ public class Spawner : MonoBehaviour {
 
 	public IEnumerator CoolDownPhase(){
 		exerciseStage = ExerciseStage.coolDown;
-		phaseIndicator.GetComponent<Animator>().Play("Spin");
-		phaseIndicator.GetComponent<Text>().text = "Cool Down Phase!";
+		StartCoroutine(uiManager.PhaseIndicatorAnimation("Cool Down Phase!"));
 
-		yield return new WaitForSeconds(1);
-
-		phaseIndicator.GetComponent<Animator>().Play("FadeOut");
 
 		while(exerciseStage == ExerciseStage.coolDown){
 			Destroy(Instantiate(ring, new Vector2(14, Random.Range(-3f, 3f)), Quaternion.identity), 15);

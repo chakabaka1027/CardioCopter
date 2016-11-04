@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Visualizer : MonoBehaviour {
 
-	public GameObject[] elements;
+	GameObject[] elements;
 
 	// Use this for initialization
 	void Start () {

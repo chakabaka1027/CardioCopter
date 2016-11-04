@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour {
 	public GameObject crate;
 	public bool hasCrate = false;
 
+	public int score = 0;
+
 	Rigidbody2D rb;
 	float thrust = 5;
 	Animator animator;
