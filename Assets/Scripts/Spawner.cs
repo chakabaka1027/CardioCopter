@@ -66,7 +66,7 @@ public class Spawner : MonoBehaviour {
 
 
 		while(exerciseStage == ExerciseStage.workOut){
-			GameObject currentBuilding = Instantiate(building, new Vector2(14, Random.Range(-3f, 1f)), Quaternion.identity) as GameObject;
+			GameObject currentBuilding = Instantiate(building, new Vector2(14, Random.Range(-8f, -4f)), Quaternion.identity) as GameObject;
 			SpawnJewel(currentBuilding.transform.position);
 			Destroy(currentBuilding, 15f);
 
@@ -75,7 +75,7 @@ public class Spawner : MonoBehaviour {
 	}
 
 	public void SpawnJewel(Vector2 offset){
-		Destroy(Instantiate(jewel, offset + Vector2.up * Random.Range(5f, 7f), Quaternion.identity), 15);
+		Destroy(Instantiate(jewel, offset + Vector2.up * Random.Range(10f, 13f), Quaternion.identity), 15);
 	}
 
 	public IEnumerator CoolDownPhase(){

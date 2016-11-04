@@ -1714,6 +1714,12 @@ Prefab:
       propertyPath: phaseIndicator
       value: 
       objectReference: {fileID: 446187513}
+    - target: {fileID: 114000011179487220, guid: 6af2c47b6a5da408e9de4ceed8fbffc6,
+        type: 2}
+      propertyPath: building
+      value: 
+      objectReference: {fileID: 1000012302937678, guid: 116b03ab122d7411da6ed90dfda4cc51,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6af2c47b6a5da408e9de4ceed8fbffc6, type: 2}
   m_IsPrefabParent: 0
@@ -2204,7 +2210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mode: 0
   intensity: 0.14
-  chromaticAberration: 3.96
+  chromaticAberration: 1.97
   axialAberration: 0.5
   blur: 0
   blurSpread: 0.75
