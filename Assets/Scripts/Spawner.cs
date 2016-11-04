@@ -51,7 +51,7 @@ public class Spawner : MonoBehaviour {
 		FindObjectOfType<PlayerController>().audioSource.PlayOneShot(FindObjectOfType<PlayerController>().startSound, 0.15f);
 
 		exerciseStage = ExerciseStage.warmUp;
-		StartCoroutine(uiManager.PhaseIndicatorAnimation("WARM UP PHASE"));
+		StartCoroutine(uiManager.PhaseIndicatorAnimation("Warm Up Phase"));
 
 		while(exerciseStage == ExerciseStage.warmUp){
 			Destroy(Instantiate(ring, new Vector2(14, Random.Range(-3f, 3f)), Quaternion.identity), 15);
@@ -62,7 +62,7 @@ public class Spawner : MonoBehaviour {
 
 	public IEnumerator WorkOutPhase(){
 		exerciseStage = ExerciseStage.workOut;
-		StartCoroutine(uiManager.PhaseIndicatorAnimation("Work Out Phase!"));
+		StartCoroutine(uiManager.PhaseIndicatorAnimation("Work Out Phase"));
 
 
 		while(exerciseStage == ExerciseStage.workOut){
@@ -80,7 +80,7 @@ public class Spawner : MonoBehaviour {
 
 	public IEnumerator CoolDownPhase(){
 		exerciseStage = ExerciseStage.coolDown;
-		StartCoroutine(uiManager.PhaseIndicatorAnimation("Cool Down Phase!"));
+		StartCoroutine(uiManager.PhaseIndicatorAnimation("Cool Down Phase"));
 
 
 		while(exerciseStage == ExerciseStage.coolDown){
