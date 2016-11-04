@@ -22,7 +22,7 @@ GameObject:
   - 212: {fileID: 212000012785609088}
   - 50: {fileID: 50000013816476668}
   - 61: {fileID: 61000013017030782}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Crate
   m_TagString: Crate
   m_Icon: {fileID: 0}

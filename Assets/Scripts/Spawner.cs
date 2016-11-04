@@ -43,8 +43,6 @@ public class Spawner : MonoBehaviour {
 
 			StartCoroutine(WorkOutPhase());
 		}
-
-
 	}
 
 	public IEnumerator WarmUpPhase(){

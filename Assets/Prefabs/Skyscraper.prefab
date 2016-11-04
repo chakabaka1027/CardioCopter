@@ -22,7 +22,7 @@ GameObject:
   - 212: {fileID: 212000012370169078}
   - 61: {fileID: 61000014210539326}
   - 114: {fileID: 114000012186241838}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Skyscraper
   m_TagString: Untagged
   m_Icon: {fileID: 0}

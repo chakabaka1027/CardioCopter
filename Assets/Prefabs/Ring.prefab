@@ -22,7 +22,7 @@ GameObject:
   - 212: {fileID: 212000013508077478}
   - 114: {fileID: 114000012617756744}
   - 61: {fileID: 61000012518900888}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
