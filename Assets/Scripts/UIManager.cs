@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour {
 
 	public GameObject phaseIndicator;
 	public Text scoreText;
+	public Text timeText;
 
 	PlayerController player;
 
@@ -14,6 +15,10 @@ public class UIManager : MonoBehaviour {
 	void Start () {
 		player = FindObjectOfType<PlayerController>();
 	
+	}
+
+	void Update(){
+		timeText.text = "" + Time.time;
 	}
 	
 	public IEnumerator PhaseIndicatorAnimation(string phaseName){
