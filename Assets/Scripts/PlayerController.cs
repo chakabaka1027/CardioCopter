@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour {
 		currentCrate.transform.parent = gameObject.transform;
 		currentCrateCounter = Instantiate(crateText, currentCrate.transform.position + Vector3.back, Quaternion.identity) as GameObject;
 		currentCrateCounter.transform.parent = currentCrate.gameObject.transform;
+
 		FindObjectOfType<PlayerController>().gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(0, -.11f);
 		FindObjectOfType<PlayerController>().gameObject.GetComponent<BoxCollider2D>().size = new Vector2(0.55f, .45f);
 
