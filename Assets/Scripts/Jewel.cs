@@ -4,6 +4,7 @@ using System.Collections;
 public class Jewel : MonoBehaviour {
 
 	PlayerController player;
+	public AudioClip jewelPickup;
 
 	void Start(){
 		player = FindObjectOfType<PlayerController>();
@@ -14,6 +15,8 @@ public class Jewel : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
+		player.GetComponent<AudioSource>().PlayOneShot(jewelPickup, 1f);
+
 		if (col.gameObject.tag == "Player" && player.hasCrate == false){
 			player.HasCrate();
 		}

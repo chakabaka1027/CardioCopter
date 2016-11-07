@@ -5,6 +5,10 @@ public class BuildingBehavior : MonoBehaviour {
 
 	PlayerController player;
 	public AudioClip buildingCollide;
+	public AudioClip crateDestroy;
+
+
+	public GameObject crateParticles;
 
 	void Start(){
 		player = FindObjectOfType<PlayerController>();
@@ -24,7 +28,7 @@ public class BuildingBehavior : MonoBehaviour {
 			player.GetComponent<AudioSource>().PlayOneShot(buildingCollide, 0.5f);
 			player.GetComponent<Animator>().Play("Damaged");
 
-			if(col.gameObject.transform.GetChild(0).GetComponent<Crate>().crateCount > 0){
+			if(col.gameObject.transform.childCount > 0 && col.gameObject.transform.GetChild(0).GetComponent<Crate>().crateCount > 0){
 				FindObjectOfType<UIManager>().AddScore(-2 * col.gameObject.transform.GetChild(0).GetComponent<Crate>().crateCount);
 			} else {
 				FindObjectOfType<UIManager>().AddScore(-2);
@@ -36,6 +40,10 @@ public class BuildingBehavior : MonoBehaviour {
 
 		if (col.gameObject.tag == "Crate"){
 			Destroy(col.gameObject);
+			player.GetComponent<AudioSource>().PlayOneShot(crateDestroy, 0.75f);
+			GameObject currentCrateParticles = Instantiate(crateParticles, col.gameObject.transform.position, Quaternion.identity) as GameObject;
+			currentCrateParticles.transform.parent = gameObject.transform;
+			Destroy(currentCrateParticles, 3);
 		}
 	}
 }

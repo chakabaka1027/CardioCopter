@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour {
 	public GameObject currentCrateCounter;
 
 	public int score = 0;
-	public int crateCount = 0;
 
 	Rigidbody2D rb;
 	float thrust = 5;

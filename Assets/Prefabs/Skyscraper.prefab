@@ -126,6 +126,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingCollide: {fileID: 8300000, guid: 9ec24778ebb7948df8bfb58e260ace28, type: 3}
+  crateDestroy: {fileID: 8300000, guid: cae432801396c48519a7df2646e77ef5, type: 3}
+  crateParticles: {fileID: 1000012426239576, guid: 29a354d5201e649feb8d44e2dab7c97d,
+    type: 2}
 --- !u!212 &212000013110333418
 SpriteRenderer:
   m_ObjectHideFlags: 1

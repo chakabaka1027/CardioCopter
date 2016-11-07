@@ -3,8 +3,10 @@ using System.Collections;
 
 public class CrateTriggerZone : MonoBehaviour {
 
-	PlayerController player;
 	public GameObject buildingFireworks;
+
+	PlayerController player;
+
 
 
 	// Use this for initialization
@@ -29,7 +31,7 @@ public class CrateTriggerZone : MonoBehaviour {
 				StartCoroutine(FindObjectOfType<UIManager>().Celebration());
 			}
 
-			FindObjectOfType<UIManager>().AddScore(2 * col.gameObject.GetComponent<Crate>().crateCount);
+			FindObjectOfType<UIManager>().AddScore((int)Mathf.Pow(2, col.gameObject.GetComponent<Crate>().crateCount)) ;
 
 			
 			Destroy(col.gameObject);
@@ -45,8 +47,8 @@ public class CrateTriggerZone : MonoBehaviour {
 			player.GetComponent<AudioSource>().PlayOneShot(FindObjectOfType<BuildingBehavior>().buildingCollide, 0.5f);
 			player.GetComponent<Animator>().Play("Damaged");
 
-			if (col.gameObject.transform.GetChild(0).GetComponent<Crate>().crateCount > 0){
-				FindObjectOfType<UIManager>().AddScore(-2 * player.crateCount);
+			if (col.gameObject.transform.childCount > 0 && col.gameObject.transform.GetChild(0).GetComponent<Crate>().crateCount > 0){
+				FindObjectOfType<UIManager>().AddScore(-2 * col.gameObject.transform.GetChild(0).GetComponent<Crate>().crateCount);
 			} else {
 				FindObjectOfType<UIManager>().AddScore(-2);
 			}

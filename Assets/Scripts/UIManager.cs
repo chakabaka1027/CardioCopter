@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
 
+	public AudioClip cheerSound;
+		
 	public float hours;
 	public float minutes;
 	public float seconds;
@@ -52,6 +54,7 @@ public class UIManager : MonoBehaviour {
 	}
 
 	public IEnumerator Celebration(){
+		player.GetComponent<AudioSource>().PlayOneShot(cheerSound, 0.25f);
 		foreach(ParticleSystem firework in backgroundFireworks){
 			firework.gameObject.SetActive(true);
 			firework.loop = true;

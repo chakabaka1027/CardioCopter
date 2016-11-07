@@ -85,6 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 721f155b477ba4839938d9d527859fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jewelPickup: {fileID: 8300000, guid: 82ffa6244c8c94b379678fd6e8b3a45d, type: 3}
 --- !u!212 &212000010144140752
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -2410,6 +2410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4cefd323798841418cfe4db1199ab18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cheerSound: {fileID: 8300000, guid: bf456e375780242a084ab6c88642a6a4, type: 3}
   hours: 0
   minutes: 0
   seconds: 0
