@@ -4,6 +4,7 @@ using System.Collections;
 public class CrateTriggerZone : MonoBehaviour {
 
 	public GameObject buildingFireworks;
+	public AudioClip fireworksSFX;
 
 	PlayerController player;
 
@@ -22,6 +23,8 @@ public class CrateTriggerZone : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col){
 		if(col.gameObject.tag == "Crate"){
 
+			
+
 			GameObject currentFireworks = Instantiate(buildingFireworks, gameObject.transform.position, Quaternion.Euler(-90, 0, 0)) as GameObject;
 			currentFireworks.transform.parent = gameObject.transform;
 			Destroy(currentFireworks, 10);
@@ -33,8 +36,12 @@ public class CrateTriggerZone : MonoBehaviour {
 
 			FindObjectOfType<UIManager>().AddScore((int)Mathf.Pow(2, col.gameObject.GetComponent<Crate>().crateCount)) ;
 
-			
 			Destroy(col.gameObject);
+
+//			yield return new WaitForSeconds(1);
+
+
+			player.GetComponent<AudioSource>().PlayOneShot(fireworksSFX, 0.5f);
 		}
 
 		if(col.gameObject.tag == "Player"){
