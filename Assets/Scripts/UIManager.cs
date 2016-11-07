@@ -8,6 +8,9 @@ public class UIManager : MonoBehaviour {
 	public float minutes;
 	public float seconds;
 
+	public ParticleSystem[] backgroundFireworks;
+
+
 	public GameObject phaseIndicator;
 	public Text scoreText;
 	public Text timeText;
@@ -48,5 +51,16 @@ public class UIManager : MonoBehaviour {
 		scoreText.text = "Score: " + player.score;
 	}
 
+	public IEnumerator Celebration(){
+		foreach(ParticleSystem firework in backgroundFireworks){
+			firework.gameObject.SetActive(true);
+			firework.loop = true;
 
+			firework.Play();
+
+			yield return new WaitForSeconds(1.5f);
+
+			firework.loop = false;
+		}
+	}
 }
