@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 	[Header("Sounds")]
 	public AudioClip startSound;
 	public AudioClip crateDrop;
+	public AudioClip damage;
 
 	public GameObject crateText;
 	public GameObject crate;
@@ -33,7 +34,9 @@ public class PlayerController : MonoBehaviour {
 			rb.AddForce(Vector2.up * thrust, ForceMode2D.Impulse);
 		}
 
-		if(Input.GetKeyDown(KeyCode.Space)){
+		if(Input.GetKeyDown(KeyCode.Space) && hasCrate == true){
+
+			audioSource.PlayOneShot(crateDrop, 0.75f);
 			DropCrate();
 		}
 	}
@@ -43,7 +46,6 @@ public class PlayerController : MonoBehaviour {
 		GameObject currentCrate = Instantiate(crate, gameObject.transform.position + Vector3.down * 0.75f, Quaternion.identity) as GameObject;
 		currentCrate.transform.parent = gameObject.transform;
 		currentCrateCounter = Instantiate(crateText, currentCrate.transform.position + Vector3.back, Quaternion.identity) as GameObject;
-		currentCrateCounter.GetComponent<TextMesh>().text = "" + crateCount;
 		currentCrateCounter.transform.parent = currentCrate.gameObject.transform;
 		FindObjectOfType<PlayerController>().gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(0, -.11f);
 		FindObjectOfType<PlayerController>().gameObject.GetComponent<BoxCollider2D>().size = new Vector2(0.55f, .45f);
@@ -52,8 +54,6 @@ public class PlayerController : MonoBehaviour {
 
 	public void DropCrate(){
 		if (hasCrate == true){
-			audioSource.PlayOneShot(crateDrop, 0.5f);
-			crateCount = 0;
 			FindObjectOfType<PlayerController>().gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(0, 0);
 			FindObjectOfType<PlayerController>().gameObject.GetComponent<BoxCollider2D>().size = new Vector2(0.55f, 0.19f);
 

@@ -653,7 +653,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 54.4, y: -23.3}
+  m_AnchoredPosition: {x: 400.6, y: -23.3}
   m_SizeDelta: {x: 87, y: 28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &292860489
@@ -699,7 +699,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 20
-    m_Alignment: 3
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1011,7 +1011,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 400, y: -23.299988}
+  m_AnchoredPosition: {x: 745, y: -23.299988}
   m_SizeDelta: {x: 87, y: 28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &533402664
@@ -1792,7 +1792,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012394196762, guid: 6af2c47b6a5da408e9de4ceed8fbffc6, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000012394196762, guid: 6af2c47b6a5da408e9de4ceed8fbffc6, type: 2}
       propertyPath: m_LocalScale.x
@@ -2856,7 +2856,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &2091288330
 GameObject:
   m_ObjectHideFlags: 0

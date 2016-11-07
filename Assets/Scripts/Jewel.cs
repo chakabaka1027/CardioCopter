@@ -19,8 +19,9 @@ public class Jewel : MonoBehaviour {
 		}
 		player.GetComponent<Rigidbody2D>().mass += 0.25f;
 		player.crateCount ++;
-		player.currentCrateCounter.GetComponent<TextMesh>().text = "" + player.crateCount;
-
+		if (player.crateCount >= 2){
+			player.currentCrateCounter.GetComponent<TextMesh>().text = "x" + player.crateCount;
+		}
 		Destroy(gameObject);
 
 	}

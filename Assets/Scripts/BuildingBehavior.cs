@@ -16,12 +16,27 @@ public class BuildingBehavior : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col){
 		if (col.gameObject.tag == "Player"){
+
+			gameObject.transform.GetChild(0).GetComponent<BoxCollider2D>().enabled = false;
+			gameObject.GetComponent<BoxCollider2D>().enabled = false;
+
+
 			player.GetComponent<AudioSource>().PlayOneShot(buildingCollide, 0.5f);
 			player.GetComponent<Animator>().Play("Damaged");
+
+			if(player.crateCount > 0){
+				FindObjectOfType<UIManager>().AddScore(-2 * player.crateCount);
+			} else {
+				FindObjectOfType<UIManager>().AddScore(-2);
+
+			}
+			player.crateCount = 0;
+
 			player.DropCrate();
 		}
 
 		if (col.gameObject.tag == "Crate"){
+			player.crateCount = 0;
 			Destroy(col.gameObject);
 		}
 	}

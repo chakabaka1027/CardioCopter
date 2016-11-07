@@ -40,7 +40,13 @@ public class UIManager : MonoBehaviour {
 
 	public void AddScore(int addedScore){
 		player.score += addedScore;
+		if (player.score < 0){
+			player.score = 0;
+		}
+
 		scoreText.gameObject.GetComponent<Animator>().Play("AddScore");
 		scoreText.text = "Score: " + player.score;
 	}
+
+
 }
