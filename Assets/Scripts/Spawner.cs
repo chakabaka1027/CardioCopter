@@ -10,7 +10,7 @@ public class Spawner : MonoBehaviour {
 
 	public UIManager uiManager;
 
-	public enum ExerciseStage{warmUp, workOut, coolDown};
+	public enum ExerciseStage{warmUp, workOut, coolDown, finished};
 	public ExerciseStage exerciseStage;
 
 	float nextSpawnTime;
@@ -32,7 +32,11 @@ public class Spawner : MonoBehaviour {
 			StopCoroutine(WorkOutPhase());
 
 			StartCoroutine(CoolDownPhase());
-		}
+		} else if(Input.GetKeyDown(KeyCode.RightArrow) && exerciseStage == ExerciseStage.coolDown){
+			StopCoroutine(CoolDownPhase());
+
+			StartCoroutine(Finished());
+		} 
 
 		if(Input.GetKeyDown(KeyCode.LeftArrow) && exerciseStage == ExerciseStage.workOut){
 			StopCoroutine(WorkOutPhase());
@@ -43,6 +47,10 @@ public class Spawner : MonoBehaviour {
 			StopCoroutine(CoolDownPhase());
 
 			StartCoroutine(WorkOutPhase());
+		} else if(Input.GetKeyDown(KeyCode.LeftArrow) && exerciseStage == ExerciseStage.finished){
+			StopCoroutine(Finished());
+
+			StartCoroutine(CoolDownPhase());
 		}
 	}
 
@@ -62,6 +70,9 @@ public class Spawner : MonoBehaviour {
 
 	public IEnumerator WorkOutPhase(){
 		exerciseStage = ExerciseStage.workOut;
+
+		yield return new WaitForSeconds(4f);
+
 		StartCoroutine(uiManager.PhaseIndicatorAnimation("Work Out Phase"));
 
 
@@ -80,14 +91,27 @@ public class Spawner : MonoBehaviour {
 
 	public IEnumerator CoolDownPhase(){
 		exerciseStage = ExerciseStage.coolDown;
-		StartCoroutine(uiManager.PhaseIndicatorAnimation("Cool Down Phase"));
 
+		yield return new WaitForSeconds(4f);
+
+		StartCoroutine(uiManager.PhaseIndicatorAnimation("Cool Down Phase"));
 
 		while(exerciseStage == ExerciseStage.coolDown){
 			Destroy(Instantiate(ring, new Vector2(14, Random.Range(-3f, 3f)), Quaternion.identity), 15);
 
 			yield return new WaitForSeconds(4f);
 		}
+	}
+
+	public IEnumerator Finished(){
+
+		exerciseStage = ExerciseStage.finished;
+
+		yield return new WaitForSeconds(9f);
+
+		StartCoroutine(uiManager.PhaseIndicatorAnimation("Great Flying!"));
+
+
 	}
 
 }
