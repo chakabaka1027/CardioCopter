@@ -29,7 +29,7 @@ public class BuildingBehavior : MonoBehaviour {
 			player.GetComponent<Animator>().Play("Damaged");
 
 			if(col.gameObject.transform.childCount > 0 && col.gameObject.transform.GetChild(0).GetComponent<Crate>().crateCount > 0){
-				FindObjectOfType<UIManager>().AddScore(-2 * col.gameObject.transform.GetChild(0).GetComponent<Crate>().crateCount);
+				FindObjectOfType<UIManager>().AddScore((int)Mathf.Pow(2, col.gameObject.GetComponent<Crate>().crateCount) * -1);
 			} else {
 				FindObjectOfType<UIManager>().AddScore(-2);
 
