@@ -21,6 +21,9 @@ public class BuildingBehavior : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col){
 		if (col.gameObject.tag == "Player"){
 
+			player.DropCrate();
+
+
 			gameObject.transform.GetChild(0).GetComponent<BoxCollider2D>().enabled = false;
 			gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
