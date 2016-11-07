@@ -21,6 +21,7 @@ GameObject:
   - 4: {fileID: 4000010520597294}
   - 23: {fileID: 23000013636922444}
   - 102: {fileID: 102000010174895572}
+  - 95: {fileID: 95000012767112758}
   m_Layer: 8
   m_Name: CrateCounter
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010038053892}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.459607, y: 0.47398087, z: -1}
+  m_LocalPosition: {x: -7.736144, y: 2.6007483, z: 4.577449}
   m_LocalScale: {x: 0.09060022, y: 0.09060022, z: 0.09060022}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -70,6 +71,23 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!95 &95000012767112758
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010038053892}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fce59c52263a34b68b7df60ae46b4602, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!102 &102000010174895572
 TextMesh:
   serializedVersion: 3

@@ -23,6 +23,7 @@ public class Jewel : MonoBehaviour {
 		player.GetComponent<Rigidbody2D>().mass += 0.25f;
 		col.gameObject.transform.GetChild(0).GetComponent<Crate>().crateCount ++;
 		if (col.gameObject.transform.GetChild(0).GetComponent<Crate>().crateCount >= 2){
+			player.currentCrateCounter.GetComponent<Animator>().Play("Increase");
 			player.currentCrateCounter.GetComponent<TextMesh>().text = "x" + col.gameObject.transform.GetChild(0).GetComponent<Crate>().crateCount;
 		}
 		Destroy(gameObject);
