@@ -1063,7 +1063,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0:01
+  m_Text: 00:00:00
 --- !u!222 &533402666
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1114,6 +1114,26 @@ Prefab:
       propertyPath: startSound
       value: 
       objectReference: {fileID: 8300000, guid: d8a4fef8ede2b4d968ea769b983ea829, type: 3}
+    - target: {fileID: 114000011077517952, guid: f104531e9c796489b8008f18c41f48df,
+        type: 2}
+      propertyPath: crateText
+      value: 
+      objectReference: {fileID: 1000010038053892, guid: fbb0fa624bcb84442a342791c4559618,
+        type: 2}
+    - target: {fileID: 114000011077517952, guid: f104531e9c796489b8008f18c41f48df,
+        type: 2}
+      propertyPath: crateCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011279309486, guid: f104531e9c796489b8008f18c41f48df, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -8.560001
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011077517952, guid: f104531e9c796489b8008f18c41f48df,
+        type: 2}
+      propertyPath: crateDrop
+      value: 
+      objectReference: {fileID: 8300000, guid: a9d3ae94e3615439bb2c1e633d6410d1, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f104531e9c796489b8008f18c41f48df, type: 2}
   m_IsPrefabParent: 0
@@ -2350,6 +2370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4cefd323798841418cfe4db1199ab18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hours: 0
   minutes: 0
   seconds: 0
   phaseIndicator: {fileID: 446187513}

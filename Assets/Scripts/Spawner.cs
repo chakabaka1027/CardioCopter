@@ -75,7 +75,7 @@ public class Spawner : MonoBehaviour {
 	}
 
 	public void SpawnJewel(Vector2 offset){
-		Destroy(Instantiate(jewel, offset + Vector2.up * Random.Range(10f, 13f), Quaternion.identity), 15);
+		Destroy(Instantiate(jewel, offset + Vector2.up * Random.Range(9f, 11f), Quaternion.identity), 15);
 	}
 
 	public IEnumerator CoolDownPhase(){

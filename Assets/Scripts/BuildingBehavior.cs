@@ -4,6 +4,7 @@ using System.Collections;
 public class BuildingBehavior : MonoBehaviour {
 
 	PlayerController player;
+	public AudioClip buildingCollide;
 
 	void Start(){
 		player = FindObjectOfType<PlayerController>();
@@ -15,16 +16,13 @@ public class BuildingBehavior : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col){
 		if (col.gameObject.tag == "Player"){
-			player.isDamaged = true;
+			player.GetComponent<AudioSource>().PlayOneShot(buildingCollide, 0.5f);
+			player.GetComponent<Animator>().Play("Damaged");
 			player.DropCrate();
 		}
 
 		if (col.gameObject.tag == "Crate"){
 			Destroy(col.gameObject);
 		}
-	}
-
-	void OnTriggerExit2D(Collider2D col){
-		player.isDamaged = false;
 	}
 }

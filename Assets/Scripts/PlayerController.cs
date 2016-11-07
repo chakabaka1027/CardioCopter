@@ -5,23 +5,24 @@ public class PlayerController : MonoBehaviour {
 
 	[Header("Sounds")]
 	public AudioClip startSound;
+	public AudioClip crateDrop;
 
-	public bool isDamaged = false;
+	public GameObject crateText;
 	public GameObject crate;
 	public bool hasCrate = false;
+	public GameObject currentCrateCounter;
 
 	public int score = 0;
+	public int crateCount = 0;
 
 	Rigidbody2D rb;
 	float thrust = 5;
-	Animator animator;
 	public AudioSource audioSource;
 
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D>();
-		animator = GetComponent<Animator>();
 		audioSource = GetComponent<AudioSource>();
 	}
 	
@@ -30,12 +31,6 @@ public class PlayerController : MonoBehaviour {
 
 		if(Input.GetKeyDown(KeyCode.LeftShift)){
 			rb.AddForce(Vector2.up * thrust, ForceMode2D.Impulse);
-		}
-
-		if (isDamaged == true){
-			animator.Play("Damaged");
-		} else if (isDamaged == false){
-			animator.Play("Flying");
 		}
 
 		if(Input.GetKeyDown(KeyCode.Space)){
@@ -47,6 +42,9 @@ public class PlayerController : MonoBehaviour {
 		hasCrate = true;
 		GameObject currentCrate = Instantiate(crate, gameObject.transform.position + Vector3.down * 0.75f, Quaternion.identity) as GameObject;
 		currentCrate.transform.parent = gameObject.transform;
+		currentCrateCounter = Instantiate(crateText, currentCrate.transform.position + Vector3.back, Quaternion.identity) as GameObject;
+		currentCrateCounter.GetComponent<TextMesh>().text = "" + crateCount;
+		currentCrateCounter.transform.parent = currentCrate.gameObject.transform;
 		FindObjectOfType<PlayerController>().gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(0, -.11f);
 		FindObjectOfType<PlayerController>().gameObject.GetComponent<BoxCollider2D>().size = new Vector2(0.55f, .45f);
 
@@ -54,6 +52,8 @@ public class PlayerController : MonoBehaviour {
 
 	public void DropCrate(){
 		if (hasCrate == true){
+			audioSource.PlayOneShot(crateDrop, 0.5f);
+			crateCount = 0;
 			FindObjectOfType<PlayerController>().gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(0, 0);
 			FindObjectOfType<PlayerController>().gameObject.GetComponent<BoxCollider2D>().size = new Vector2(0.55f, 0.19f);
 

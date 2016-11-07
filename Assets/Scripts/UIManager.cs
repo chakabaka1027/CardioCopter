@@ -23,8 +23,8 @@ public class UIManager : MonoBehaviour {
 	}
 
 	void Update(){
-		hours = (int)(Time.time / 3600f);
-		minutes = (int)(Time.time / 60f);
+		hours = (int)((Time.time / 3600f) % 60);
+		minutes = (int)((Time.time / 60f) % 60);
 		seconds = (int)(Time.time % 60f);
 		timeText.text = hours.ToString("00") + ":" + minutes.ToString("00") + ":" + seconds.ToString("00");
 	}

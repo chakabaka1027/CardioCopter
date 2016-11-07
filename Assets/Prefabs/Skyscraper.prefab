@@ -67,6 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae18cc30b15df43a08a6aa898c449ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingCollide: {fileID: 8300000, guid: 9ec24778ebb7948df8bfb58e260ace28, type: 3}
 --- !u!212 &212000013110333418
 SpriteRenderer:
   m_ObjectHideFlags: 1
