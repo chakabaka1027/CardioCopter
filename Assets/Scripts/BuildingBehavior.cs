@@ -24,19 +24,17 @@ public class BuildingBehavior : MonoBehaviour {
 			player.GetComponent<AudioSource>().PlayOneShot(buildingCollide, 0.5f);
 			player.GetComponent<Animator>().Play("Damaged");
 
-			if(player.crateCount > 0){
-				FindObjectOfType<UIManager>().AddScore(-2 * player.crateCount);
+			if(col.gameObject.transform.GetChild(0).GetComponent<Crate>().crateCount > 0){
+				FindObjectOfType<UIManager>().AddScore(-2 * col.gameObject.transform.GetChild(0).GetComponent<Crate>().crateCount);
 			} else {
 				FindObjectOfType<UIManager>().AddScore(-2);
 
 			}
-			player.crateCount = 0;
 
 			player.DropCrate();
 		}
 
 		if (col.gameObject.tag == "Crate"){
-			player.crateCount = 0;
 			Destroy(col.gameObject);
 		}
 	}

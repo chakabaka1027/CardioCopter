@@ -22,6 +22,7 @@ GameObject:
   - 212: {fileID: 212000012785609088}
   - 50: {fileID: 50000013816476668}
   - 61: {fileID: 61000013017030782}
+  - 114: {fileID: 114000011671180764}
   m_Layer: 8
   m_Name: Crate
   m_TagString: Crate
@@ -73,6 +74,18 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.15999998, y: 0.15}
+--- !u!114 &114000011671180764
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013642570602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 582d349c204b6408c9bb205bebbd0063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crateCount: 0
 --- !u!212 &212000012785609088
 SpriteRenderer:
   m_ObjectHideFlags: 1

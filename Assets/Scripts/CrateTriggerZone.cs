@@ -24,12 +24,14 @@ public class CrateTriggerZone : MonoBehaviour {
 			currentFireworks.transform.parent = gameObject.transform;
 			Destroy(currentFireworks, 10);
 
-			if(player.crateCount >= 5){
+			if(col.gameObject.GetComponent<Crate>().crateCount >= 5){
+
 				StartCoroutine(FindObjectOfType<UIManager>().Celebration());
 			}
 
-			FindObjectOfType<UIManager>().AddScore(2 * player.crateCount);
-			player.crateCount = 0;
+			FindObjectOfType<UIManager>().AddScore(2 * col.gameObject.GetComponent<Crate>().crateCount);
+
+			
 			Destroy(col.gameObject);
 		}
 
@@ -43,14 +45,11 @@ public class CrateTriggerZone : MonoBehaviour {
 			player.GetComponent<AudioSource>().PlayOneShot(FindObjectOfType<BuildingBehavior>().buildingCollide, 0.5f);
 			player.GetComponent<Animator>().Play("Damaged");
 
-			if(player.crateCount > 0){
+			if (col.gameObject.transform.GetChild(0).GetComponent<Crate>().crateCount > 0){
 				FindObjectOfType<UIManager>().AddScore(-2 * player.crateCount);
 			} else {
 				FindObjectOfType<UIManager>().AddScore(-2);
 			}
-
-			player.crateCount = 0;
-
 		}
 	}
 
