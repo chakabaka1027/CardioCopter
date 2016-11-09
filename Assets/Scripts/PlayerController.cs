@@ -51,8 +51,6 @@ public class PlayerController : MonoBehaviour {
 		} else if (hasCrate == false){
 			GetComponent<LineRenderer>().enabled = false;
 		}
-
-
 	}
 
 	public void HasCrate(){

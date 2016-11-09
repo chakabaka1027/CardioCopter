@@ -56,7 +56,7 @@ public class UIManager : MonoBehaviour {
 	}
 
 	public IEnumerator Celebration(){
-		player.GetComponent<AudioSource>().PlayOneShot(cheerSound, 0.4f);
+		player.GetComponent<AudioSource>().PlayOneShot(cheerSound, 0.3f);
 		foreach(ParticleSystem firework in backgroundFireworks){
 			firework.gameObject.SetActive(true);
 			firework.loop = true;
