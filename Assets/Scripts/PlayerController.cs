@@ -40,6 +40,21 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	void LateUpdate(){
+		if(hasCrate == true){
+			GetComponent<LineRenderer>().enabled = true;
+
+			GetComponent<LineRenderer>().SetPosition(0, gameObject.transform.position + Vector3.down * 0.1f);
+			GetComponent<LineRenderer>().SetPosition(1, gameObject.transform.GetChild(0).position);
+			GetComponent<LineRenderer>().SetColors(Color.black, Color.black);
+
+		} else if (hasCrate == false){
+			GetComponent<LineRenderer>().enabled = false;
+		}
+
+
+	}
+
 	public void HasCrate(){
 		hasCrate = true;
 		GameObject currentCrate = Instantiate(crate, gameObject.transform.position + Vector3.down * 0.75f, Quaternion.identity) as GameObject;
