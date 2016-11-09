@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour {
 
+	public bool devMode = false;
+
 	public GameObject jewel;
 	public GameObject building;
 	public GameObject ring;
@@ -19,39 +21,59 @@ public class Spawner : MonoBehaviour {
 
 	void Start(){
 		uiManager = FindObjectOfType<UIManager>();
-		StartCoroutine(WarmUpPhase());
+
+		if(devMode == true){
+			StartCoroutine(WarmUpPhase());
+		} else if (devMode == false){
+			StartCoroutine(PlayPhases());
+		}
 	}
 
 	void Update(){
-		if(Input.GetKeyDown(KeyCode.RightArrow) && exerciseStage == ExerciseStage.warmUp){
-			StopCoroutine(WarmUpPhase());
-			StartCoroutine(WorkOutPhase());
-		} 
+		if(devMode == true){
+			if(Input.GetKeyDown(KeyCode.RightArrow) && exerciseStage == ExerciseStage.warmUp){
+				StopCoroutine(WarmUpPhase());
+				StartCoroutine(WorkOutPhase());
+			} 
 
-		else if(Input.GetKeyDown(KeyCode.RightArrow) && exerciseStage == ExerciseStage.workOut){
-			StopCoroutine(WorkOutPhase());
+			else if(Input.GetKeyDown(KeyCode.RightArrow) && exerciseStage == ExerciseStage.workOut){
+				StopCoroutine(WorkOutPhase());
 
-			StartCoroutine(CoolDownPhase());
-		} else if(Input.GetKeyDown(KeyCode.RightArrow) && exerciseStage == ExerciseStage.coolDown){
-			StopCoroutine(CoolDownPhase());
+				StartCoroutine(CoolDownPhase());
+			} else if(Input.GetKeyDown(KeyCode.RightArrow) && exerciseStage == ExerciseStage.coolDown){
+				StopCoroutine(CoolDownPhase());
 
-			StartCoroutine(Finished());
-		} 
+				StartCoroutine(Finished());
+			} 
 
-		if(Input.GetKeyDown(KeyCode.LeftArrow) && exerciseStage == ExerciseStage.workOut){
-			StopCoroutine(WorkOutPhase());
-			StartCoroutine(WarmUpPhase());
-		} 
+			if(Input.GetKeyDown(KeyCode.LeftArrow) && exerciseStage == ExerciseStage.workOut){
+				StopCoroutine(WorkOutPhase());
+				StartCoroutine(WarmUpPhase());
+			} 
 
-		else if(Input.GetKeyDown(KeyCode.LeftArrow) && exerciseStage == ExerciseStage.coolDown){
-			StopCoroutine(CoolDownPhase());
+			else if(Input.GetKeyDown(KeyCode.LeftArrow) && exerciseStage == ExerciseStage.coolDown){
+				StopCoroutine(CoolDownPhase());
 
-			StartCoroutine(WorkOutPhase());
-		} else if(Input.GetKeyDown(KeyCode.LeftArrow) && exerciseStage == ExerciseStage.finished){
-			StopCoroutine(Finished());
+				StartCoroutine(WorkOutPhase());
+			} else if(Input.GetKeyDown(KeyCode.LeftArrow) && exerciseStage == ExerciseStage.finished){
+				StopCoroutine(Finished());
 
-			StartCoroutine(CoolDownPhase());
+				StartCoroutine(CoolDownPhase());
+			}
 		}
+	}
+
+	IEnumerator PlayPhases(){
+		StartCoroutine(WarmUpPhase());
+		yield return new WaitForSeconds(60);
+		StopCoroutine(WarmUpPhase());
+		StartCoroutine(WorkOutPhase());
+		yield return new WaitForSeconds(180);
+		StopCoroutine(WorkOutPhase());
+		StartCoroutine(CoolDownPhase());
+		yield return new WaitForSeconds(60);
+		StopCoroutine(CoolDownPhase());
+		StartCoroutine(Finished());
 	}
 
 	public IEnumerator WarmUpPhase(){

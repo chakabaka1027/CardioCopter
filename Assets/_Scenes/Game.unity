@@ -1873,6 +1873,11 @@ Prefab:
       value: 
       objectReference: {fileID: 1000012302937678, guid: 116b03ab122d7411da6ed90dfda4cc51,
         type: 2}
+    - target: {fileID: 114000011179487220, guid: 6af2c47b6a5da408e9de4ceed8fbffc6,
+        type: 2}
+      propertyPath: devMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6af2c47b6a5da408e9de4ceed8fbffc6, type: 2}
   m_IsPrefabParent: 0
@@ -2153,7 +2158,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   Priority: 128
