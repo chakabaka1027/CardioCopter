@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour {
 	[Header("Sounds")]
 	public AudioClip startSound;
 	public AudioClip crateDrop;
-	public AudioClip damage;
 
 	public GameObject crateText;
 	public GameObject crate;

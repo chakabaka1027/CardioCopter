@@ -132,6 +132,18 @@ public class Spawner : MonoBehaviour {
 		yield return new WaitForSeconds(9f);
 
 		StartCoroutine(uiManager.PhaseIndicatorAnimation("Great Flying!"));
+		FindObjectOfType<PlayerController>().audioSource.PlayOneShot(uiManager.cheerSound, 0.4f);
+
+		yield return new WaitForSeconds(2f);
+
+		FindObjectOfType<UIManager>().blackFade.GetComponent<Animator>().Play("FadeOut");
+
+
+		yield return new WaitForSeconds(2f);
+
+		FindObjectOfType<UIManager>().postScoreText.gameObject.SetActive(true);
+		FindObjectOfType<UIManager>().PostGameScore();
+		FindObjectOfType<UIManager>().postScoreText.GetComponent<Animator>().Play("FadeIn");
 
 
 	}

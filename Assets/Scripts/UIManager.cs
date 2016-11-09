@@ -10,12 +10,17 @@ public class UIManager : MonoBehaviour {
 	public float minutes;
 	public float seconds;
 
+	public GameObject blackFade;
+
 	public ParticleSystem[] backgroundFireworks;
 
 
 	public GameObject phaseIndicator;
 	public Text scoreText;
 	public Text timeText;
+
+	public Text postScoreText;
+
 
 	PlayerController player;
 
@@ -24,7 +29,7 @@ public class UIManager : MonoBehaviour {
 	void Start () {
 
 		player = FindObjectOfType<PlayerController>();
-	
+		blackFade.GetComponent<Animator>().Play("FadeIn");	
 	}
 
 	void Update(){
@@ -68,4 +73,9 @@ public class UIManager : MonoBehaviour {
 			firework.loop = false;
 		}
 	}
+
+	public void PostGameScore(){
+		postScoreText.text = "Score: " + player.score;
+
+	}	
 }
