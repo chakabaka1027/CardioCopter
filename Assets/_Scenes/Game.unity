@@ -1920,7 +1920,7 @@ Prefab:
     - target: {fileID: 114000011179487220, guid: 6af2c47b6a5da408e9de4ceed8fbffc6,
         type: 2}
       propertyPath: devMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6af2c47b6a5da408e9de4ceed8fbffc6, type: 2}
